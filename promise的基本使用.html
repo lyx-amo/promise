@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 基本编码流程
+        // 1) 创建promise对象(pending状态), 指定执行器函数
+        const p = new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                let time = Date.now()
+                if(time % 2 == 0){
+                    resolve('成功了' + time)
+                }else{
+                    reject('失败了 '+ time)
+                }
+            }, 1000);
+        })
+
+        p.then(
+            value =>{
+                console.log('成功',value);
+            },
+            reason =>{
+                console.log('失败',reason);
+            }
+        )
+
+        // 2) 在执行器函数中启动异步任务
+        // 3) 根据结果做不同处理
+        // 3.1) 如果成功了, 调用resolve(), 指定成功的value, 变为resolved状态
+        // 3.2) 如果失败了, 调用reject(), 指定失败的reason, 变为rejected状态
+        // 4) 能promise指定成功或失败的回调函数来获取成功的vlaue或失败的reason
+    </script>
+</body>
+
+</html>
