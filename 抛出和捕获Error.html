@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //数值、字符串、布尔值 有对应的包装对象，
+        // let b = null 
+
+        // console.log(b.xxx);//Uncaught TypeError: Cannot read property 'xxx' of null 捕获类型错误：不能读取null的xxx属性
+
+        // let c = 3 // 等同于new Number(3)
+        // console.log(c.xxx);// undefined
+
+
+        //捕获错误
+        // try {
+        //     let a = {}
+        //     a()
+        // } catch (error) {
+        //     console.log(error.message);
+        //     console.log(error.stack);
+        // }
+        // console.log('---------');
+
+
+        //抛出错误
+
+        function doThing(){
+            const time = Date.now()
+            if(time %2 == 1){
+                console.log('奇数正常工作'+time);
+            }else{
+                throw new Error('偶数工作失败'+time)
+            }
+        }
+
+        try{
+            doThing()
+        }catch(error){
+            console.log(error.message);
+        }
+
+        console.log('--------------');
+    </script>
+</body>
+
+</html>
