@@ -12,25 +12,28 @@
     <script>
         // 基本编码流程
         // 1) 创建promise对象(pending状态), 指定执行器函数
-        const p = new Promise((resolve,reject)=>{ // excutor 执行器函数 同步回调函数
+        const p = new Promise((resolve, reject) => { // excutor 执行器函数 同步回调函数
             setTimeout(() => {
                 let time = Date.now()
-                if(time % 2 == 0){
+                if (time % 2 == 0) {
                     resolve('成功了' + time)
-                }else{
-                    reject('失败了 '+ time)
+                } else {
+                    reject('失败了 ' + time)
                 }
             }, 1000);
         })
+        console.log(p);
 
         p.then(
-            value =>{
-                console.log('成功',value);
+            value => {
+                console.log('成功', value);
             },
-            reason =>{
-                console.log('失败',reason);
+            reason => {
+                console.log('失败', reason);
             }
         )
+        console.log(p);
+
 
         // 2) 在执行器函数中启动异步任务
         // 3) 根据结果做不同处理
